@@ -1,0 +1,17 @@
+.bg-primary {
+    background-color: #EB6864 !important;
+    color: #fff !important;
+    border: 1px solid #eee;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: white !important;
+}
+
+.nav-link:focus {
+  color: white !important;
+}
