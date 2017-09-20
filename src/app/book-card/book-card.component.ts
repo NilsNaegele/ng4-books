@@ -24,7 +24,7 @@ export class BookCardComponent {
 
   getQuantity() {
     if (!this.shoppingCart) { return 0; }
-    let item = this.shoppingCart.items[this.book.$key];
+    const item = this.shoppingCart.items[this.book.$key];
     return item ? item.quantity : 0;
   }
 

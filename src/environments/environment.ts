@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyAdnd5fBBwdWtdaPE8gl2ebDFIFt9gzVyU',
+    apiKey: '',
     authDomain: 'ng4-books.firebaseapp.com',
     databaseURL: 'https://ng4-books.firebaseio.com',
     projectId: 'ng4-books',

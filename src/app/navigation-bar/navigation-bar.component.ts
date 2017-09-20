@@ -27,11 +27,13 @@ export class NavigationBarComponent implements OnInit {
   async ngOnInit() {
     this.authenticationService.appUser$.subscribe(appUser => this.appUser = appUser);
 
-    let cart$ = await this.shoppingCartService.getCart();
+    const cart$ = await this.shoppingCartService.getCart();
     cart$.subscribe(cart => {
         this.shoppingCartItemCount = 0;
-        for (let bookId in cart.items) {
+        for (const bookId in cart.items) {
+              if (cart.items.hasOwnProperty(bookId)) {
               this.shoppingCartItemCount += cart.items[bookId].quantity;
+            }
         }
     });
   }

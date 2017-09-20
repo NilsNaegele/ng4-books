@@ -18,15 +18,15 @@ export class ShoppingCartService {
   }
 
   async getCart(): Promise<FirebaseObjectObservable<ShoppingCart>> {
-    let cartId = await this.getOrCreateCartId();
+    const cartId = await this.getOrCreateCartId();
     return this.db.object('/shopping-carts/' + cartId);
   }
 
   private async getOrCreateCartId(): Promise<string> {
-    let cartId = localStorage.getItem('cartId');
+    const cartId = localStorage.getItem('cartId');
     if (cartId) { return cartId; }
 
-    let result = await this.create();
+    const result = await this.create();
     localStorage.setItem('cartId', result.key);
     return result.key;
   }
