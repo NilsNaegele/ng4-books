@@ -53,12 +53,6 @@
     </form>
   </div>
   <div class="col-md-6">
-    <div *ngIf="book.title" class="card" style="width: 20rem; height: 20rem;">
-      <img style="height: 20rem;" class="card-img-top" [src]="book.imageUrl" alt="{{ title.value }}" *ngIf="book.imageUrl">
-      <div class="card-block">
-        <h4 class="card-title">{{ book.title }}</h4>
-        <p class="card-text">{{ book.price | currency:'EUR':true }}</p>
-      </div>
-    </div>
+    <app-book-card [book]="book" [showActions]="false"></app-book-card>
   </div>
 </div>

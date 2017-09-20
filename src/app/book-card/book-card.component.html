@@ -1,0 +1,35 @@
+<div *ngIf="book.title" class="card" style="width: 24rem; height: 35rem;">
+  <img *ngIf="book.imageUrl" style="height: 20rem;" class="card-img-top" [src]="book.imageUrl" alt="{{ book.title }}">
+  <div class="card-block">
+    <h4 class="card-title">{{ book.title }}</h4>
+    <p class="card-text">{{ book.price | currency:'EUR':true }}</p>
+    <div *ngIf="showActions"  class="btn-group" role="group" aria-label="Angular Links">
+      <a href="https://angular.io/api" target="_blank" class="btn btn-warning">API</a>
+      <a href="https://github.com/angular/angular/tree/4.4.2" target="_blank" class="btn btn-primary">Code</a>
+      <a href="https://angular.io/tutorial" target="_blank" class="btn btn-info">TOH</a>
+      <a href="https://material.angular.io/" target="_blank" class="btn btn-danger">AM</a>
+      <a href="https://angular.io/guide/styleguide" target="_blank" class="btn btn-success">Style</a>
+      <a href="https://docs.angularjs.org/tutorial" target="_blank" class="btn btn-secondary">Cat</a>
+    </div>
+  </div>
+  <div *ngIf="showActions" class="card-footer">
+    <button
+    *ngIf="getQuantity() === 0; else updateQuantity;"
+    (click)="addToCart(book)" routerLink="/home"
+    class="btn btn-info btn-block btn-lg">Get Code Now</button>
+    <ng-template #updateQuantity>
+        <div class="row no-gutters">
+          <div class="col-2">
+              <button (click)="removeFromCart()" class="btn btn-info btn-block">-</button>
+          </div>
+          <div class="col text-center">
+              {{ getQuantity() }} selected
+          </div>
+          <div class="col-2">
+              <button (click)="addToCart()" class="btn btn-info btn-block">+</button>
+          </div>
+        </div>
+    </ng-template>
+    <div> </div>
+  </div>
+</div>

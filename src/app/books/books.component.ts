@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../book.service';
-import { CategoryService } from '../category.service';
+import { ShoppingCartService } from '../shopping-cart.service';
 
 import { Book } from '../models/books';
-
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -12,15 +12,16 @@ import 'rxjs/add/operator/switchMap';
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent {
+export class BooksComponent implements OnInit, OnDestroy {
+  subscription: Subscription;
   books: Book[] = [];
   filteredBooks: Book[] = [];
-  categories$;
   category: string;
+  cart: any;
 
   constructor(private bookService: BookService,
-    private categoryService: CategoryService,
-    private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private shoppingCartService: ShoppingCartService) {
 
     bookService.getAll().switchMap(books => {
       this.books = books;
@@ -32,7 +33,10 @@ export class BooksComponent {
         this.filteredBooks = (this.category) ?
           this.books.filter(b => b.category === this.category) : this.books;
       });
-    this.categories$ = categoryService.getAll();
+  }
+
+  async ngOnInit() {
+  this.subscription = (await this.shoppingCartService.getCart()).subscribe(cart => this.cart = cart);
   }
 
   private applySearchQuery() {
@@ -40,5 +44,8 @@ export class BooksComponent {
     this.books.filter(b => b.title.toLowerCase().includes(query)) : this.books);
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
 }

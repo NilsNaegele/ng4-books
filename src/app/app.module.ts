@@ -16,6 +16,7 @@ import { AdminAuthorizationGuard } from './admin-authorization-guard.service';
 import { UserService } from './user.service';
 import { CategoryService } from './category.service';
 import { BookService } from './book.service';
+import { ShoppingCartService } from './shopping-cart.service';
 
 import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
@@ -34,6 +35,8 @@ import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { ChatComponent } from './chat/chat.component';
 import { BookFormComponent } from './admin/book-form/book-form.component';
+import { BookCardComponent } from './book-card/book-card.component';
+import { BookFilterComponent } from './books/book-filter/book-filter.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,9 @@ import { BookFormComponent } from './admin/book-form/book-form.component';
     LoginComponent,
     AboutComponent,
     ChatComponent,
-    BookFormComponent
+    BookFormComponent,
+    BookCardComponent,
+    BookFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +91,7 @@ import { BookFormComponent } from './admin/book-form/book-form.component';
     ])
   ],
   providers: [ AuthenticationService, AuthenticationGuard, AdminAuthorizationGuard,
-               UserService, CategoryService, BookService ],
+               UserService, CategoryService, BookService, ShoppingCartService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

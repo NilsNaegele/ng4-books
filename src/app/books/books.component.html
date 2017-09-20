@@ -1,34 +1,13 @@
 
 <div class="row">
-    <div class="col-md-3">
-      <div class="sticky-top">
-      <div class="list-group">
-        <a class="list-group-item list-group-item-action"
-        [class.active]="!category"
-        routerLink="/home">We Are All Angular</a>
-        <a *ngFor="let cat of categories$ | async"
-            routerLink="/books"
-            [queryParams]="{category: cat.$key}"
-            class="list-group-item list-group-item-action"
-            [class.active]="category === cat.$key">
-            {{ cat.name }}
-        </a>
-      </div>
-    </div>
+    <div class="col-3">
+      <app-book-filter [category]="category"></app-book-filter>
     </div>
     <div class="col">
       <div class="row">
-        <ng-container *ngFor="let b of filteredBooks; let i = index;">
+        <ng-container *ngFor="let book of filteredBooks; let i = index;">
           <div class="col">
-            <div class="card" style="width: 20rem; height: 30rem;">
-              <img style="height: 20rem;" class="card-img-top" [src]="b.imageUrl" alt="{{ b.title }}">
-              <div class="card-block">
-                <h4 class="card-title">{{ b.title }}</h4>
-                <p class="card-text">{{ b.price | currency:'EUR':true }}</p>
-                <a routerLink="/home" class="btn btn-primary">Read Now</a>
-                <a href="https://angular.io/api" target="_blank" class="btn btn-warning">Angular API</a>
-              </div>
-            </div>
+            <app-book-card [book]="book" [shoppingCart]="cart"></app-book-card>
           </div>
           <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
         </ng-container>
