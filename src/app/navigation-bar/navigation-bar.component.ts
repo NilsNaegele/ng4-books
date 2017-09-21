@@ -5,6 +5,7 @@ import { ShoppingCartService } from '../shopping-cart.service';
 import { Observable } from 'rxjs/Observable';
 
 import { AppUser } from '../models/app-user';
+import { ShoppingCart } from '../models/shopping-cart';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -13,7 +14,7 @@ import { AppUser } from '../models/app-user';
 })
 export class NavigationBarComponent implements OnInit {
   appUser: AppUser;
-  shoppingCartItemCount: number;
+  cart$: Observable<ShoppingCart>;
 
   constructor(private authenticationService: AuthenticationService,
               private shoppingCartService: ShoppingCartService,
@@ -26,16 +27,7 @@ export class NavigationBarComponent implements OnInit {
 
   async ngOnInit() {
     this.authenticationService.appUser$.subscribe(appUser => this.appUser = appUser);
-
-    const cart$ = await this.shoppingCartService.getCart();
-    cart$.subscribe(cart => {
-        this.shoppingCartItemCount = 0;
-        for (const bookId in cart.items) {
-              if (cart.items.hasOwnProperty(bookId)) {
-              this.shoppingCartItemCount += cart.items[bookId].quantity;
-            }
-        }
-    });
+    this.cart$ = await this.shoppingCartService.getCart();
   }
 
   logout() {

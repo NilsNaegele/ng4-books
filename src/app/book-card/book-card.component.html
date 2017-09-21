@@ -1,5 +1,8 @@
 <div *ngIf="book.title" class="card" style="width: 24rem; height: 35rem;">
-  <img *ngIf="book.imageUrl" style="height: 20rem;" class="card-img-top" [src]="book.imageUrl" alt="{{ book.title }}">
+  <a [routerLink]="['/book/', book.$key]">
+  <img *ngIf="book.imageUrl" style="height: 20rem; width: 24rem;" class="card-img-top"
+  [src]="book.imageUrl" alt="{{ book.title }}">
+  </a>
   <div class="card-block">
     <h4 class="card-title">{{ book.title }}</h4>
     <p class="card-text">{{ book.price | currency:'EUR':true }}</p>
@@ -12,23 +15,13 @@
       <a href="https://docs.angularjs.org/tutorial" target="_blank" class="btn btn-secondary">Cat</a>
     </div>
   </div>
-  <div *ngIf="showActions" class="card-footer">
+  <div *ngIf="showActions && shoppingCart" class="card-footer">
     <button
-    *ngIf="getQuantity() === 0; else updateQuantity;"
+    *ngIf="shoppingCart.getQuantity(book) === 0; else updateQuantity;"
     (click)="addToCart(book)" routerLink="/home"
     class="btn btn-info btn-block btn-lg">Get Code Now</button>
     <ng-template #updateQuantity>
-        <div class="row no-gutters">
-          <div class="col-2">
-              <button (click)="removeFromCart()" class="btn btn-info btn-block">-</button>
-          </div>
-          <div class="col text-center">
-              {{ getQuantity() }} selected
-          </div>
-          <div class="col-2">
-              <button (click)="addToCart()" class="btn btn-info btn-block">+</button>
-          </div>
-        </div>
+        <app-book-quantity [book]="book" [shoppingCart]="shoppingCart" ></app-book-quantity>
     </ng-template>
     <div> </div>
   </div>

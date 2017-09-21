@@ -1,0 +1,13 @@
+.table-header-width-quantity {
+  width: 230px;
+}
+
+.table-header-width-price {
+  width: 200px;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%; 
+}

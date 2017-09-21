@@ -6,6 +6,7 @@ import 'rxjs/add/operator/take';
 
 export interface BookForm {
   title: string;
+  description: string;
   price: number;
   category: string;
   imageUrl: string;
@@ -19,7 +20,7 @@ export interface BookForm {
 export class BookFormComponent {
   categories$;
   id = '';
-  book: BookForm = {title: '', price: 0, category: '', imageUrl: ''};
+  book: BookForm = {title: '', description: '', price: 0, category: '', imageUrl: ''};
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,

@@ -4,6 +4,8 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
 import { Book } from './models/books';
 import { ShoppingCart } from './models/shopping-cart';
 
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 
 @Injectable()
@@ -11,15 +13,29 @@ export class ShoppingCartService {
 
   constructor(private db: AngularFireDatabase) { }
 
+  async getCart(): Promise<Observable<ShoppingCart>> {
+    const cartId = await this.getOrCreateCartId();
+    return this.db.object('/shopping-carts/' + cartId)
+                  .map(b => new ShoppingCart(b.items));
+  }
+
+  addToCart(book: Book) {
+      this.updateItem(book, +1);
+  }
+
+  removeFromCart(book: Book) {
+    this.updateItem(book, -1);
+  }
+
+  async clearCart() {
+    const cartId = await this.getOrCreateCartId();
+    this.db.object('/shopping-carts/' + cartId + '/items').remove();
+  }
+
   private create() {
     return this.db.list('/shopping-carts').push( {
       dateCreated: new Date().getTime()
     });
-  }
-
-  async getCart(): Promise<FirebaseObjectObservable<ShoppingCart>> {
-    const cartId = await this.getOrCreateCartId();
-    return this.db.object('/shopping-carts/' + cartId);
   }
 
   private async getOrCreateCartId(): Promise<string> {
@@ -35,20 +51,20 @@ export class ShoppingCartService {
     return this.db.object('/shopping-carts/' + cartId + '/items/' + bookId);
   }
 
-  addToCart(book: Book) {
-      this.updateItemQuantity(book, +1);
-  }
-
-  removeFromCart(book: Book) {
-    this.updateItemQuantity(book, -1);
-  }
-
-  private async updateItemQuantity(book: Book, change: number) {
+  private async updateItem(book: Book, change: number) {
     const cartId = await this.getOrCreateCartId();
     const item$ = this.getItem(cartId, book.$key);
     item$.take(1).subscribe(item => {
-        item$.update({ book: book, quantity: (item.quantity || 0) + change
+      const quantity = (item.quantity || 0) + change;
+      if (quantity === 0) { item$.remove(); }
+      else {
+        item$.update({
+          title: book.title,
+          imageUrl: book.imageUrl,
+          price: book.price,
+          quantity: quantity
         });
+      }
     });
   }
 

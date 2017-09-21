@@ -5,4 +5,5 @@ export interface Book {
   price: number;
   category: string;
   imageUrl: string;
+  description: string;
 }

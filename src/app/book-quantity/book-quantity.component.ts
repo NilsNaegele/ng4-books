@@ -1,22 +1,25 @@
 import { Component, Input } from '@angular/core';
 import { Book } from '../models/books';
-import { ShoppingCart } from '../models/shopping-cart';
 import { ShoppingCartService } from '../shopping-cart.service';
 
+
 @Component({
-  selector: 'app-book-card',
-  templateUrl: './book-card.component.html',
-  styleUrls: ['./book-card.component.css']
+  selector: 'app-book-quantity',
+  templateUrl: './book-quantity.component.html',
+  styleUrls: ['./book-quantity.component.css']
 })
-export class BookCardComponent {
+export class BookQuantityComponent {
   @Input() book: Book;
-  @Input() showActions = true;
-  @Input() shoppingCart: ShoppingCart;
+  @Input() shoppingCart;
 
   constructor(private cartService: ShoppingCartService) { }
 
   addToCart() {
   this.cartService.addToCart(this.book);
+  }
+
+  removeFromCart() {
+    this.cartService.removeFromCart(this.book);
   }
 
 }

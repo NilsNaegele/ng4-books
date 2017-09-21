@@ -37,6 +37,8 @@ import { ChatComponent } from './chat/chat.component';
 import { BookFormComponent } from './admin/book-form/book-form.component';
 import { BookCardComponent } from './book-card/book-card.component';
 import { BookFilterComponent } from './books/book-filter/book-filter.component';
+import { BookQuantityComponent } from './book-quantity/book-quantity.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { BookFilterComponent } from './books/book-filter/book-filter.component';
     ChatComponent,
     BookFormComponent,
     BookCardComponent,
-    BookFilterComponent
+    BookFilterComponent,
+    BookQuantityComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +78,7 @@ import { BookFilterComponent } from './books/book-filter/book-filter.component';
       { path: 'home', component: BooksComponent },
       { path: 'about', component: AboutComponent },
       { path: 'books', component: BooksComponent },
+      { path: 'book/:id', component: BookDetailsComponent },
       { path: 'animations', component: AnimationsComponent },
       { path: 'chat', component: ChatComponent},
       { path: 'login', component: LoginComponent },
