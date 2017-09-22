@@ -1,3 +1,19 @@
-<p>
-  animations works!
-</p>
+<div class="row col-12">
+  <button [disabled]="!technologyService.canAdd()" (click)="technologyService.addInactive()"
+          class="btn btn-primary btn-lg">Add Inactive Technology</button>
+  <button [disabled]="!technologyService.canAdd()" (click)="technologyService.addActive()"
+          class="btn btn-success btn-lg">Add Active Technology</button>
+  <button [disabled]="!technologyService.canRemove()" (click)="technologyService.remove()"
+  class="btn btn-info btn-lg">Remove Technology</button>
+</div>
+<div class="row col-12 mt-3">
+      <button (click)="animationsListBasic()" class="btn btn-primary btn-sm">Animations List Basic</button>
+      <button (click)="animationsListEnterLeave()" class="btn btn-warning btn-sm">Animations List Enter Leave</button>
+</div>
+<div *ngIf="animationsLB" class="row col-3 offset-3 mt-3">
+  <app-animations-list-basic [technologies]="technologies"></app-animations-list-basic>
+</div>
+
+<div *ngIf="animationsLEL" class="row col">
+    <app-animations-list-enter-leave [technologies]="technologies"></app-animations-list-enter-leave>
+</div>

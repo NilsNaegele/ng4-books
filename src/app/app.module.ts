@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
@@ -18,6 +19,7 @@ import { CategoryService } from './category.service';
 import { BookService } from './book.service';
 import { ShoppingCartService } from './shopping-cart.service';
 import { OrderService } from './order.service';
+import { AnimationsService } from './animations.service';
 
 import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
@@ -42,6 +44,8 @@ import { BookQuantityComponent } from './book-quantity/book-quantity.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { DeliveryFormComponent } from './delivery-form/delivery-form.component';
+import { AnimationsListBasicComponent } from './animations-list-basic/animations-list-basic.component';
+import { AnimationsListEnterLeaveComponent } from './animations-list-enter-leave/animations-list-enter-leave.component';
 
 @NgModule({
   declarations: [
@@ -67,10 +71,13 @@ import { DeliveryFormComponent } from './delivery-form/delivery-form.component';
     BookQuantityComponent,
     BookDetailsComponent,
     ShoppingCartSummaryComponent,
-    DeliveryFormComponent
+    DeliveryFormComponent,
+    AnimationsListBasicComponent,
+    AnimationsListEnterLeaveComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     CustomFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -101,7 +108,8 @@ import { DeliveryFormComponent } from './delivery-form/delivery-form.component';
     ])
   ],
   providers: [ AuthenticationService, AuthenticationGuard, AdminAuthorizationGuard,
-               UserService, CategoryService, BookService, ShoppingCartService, OrderService ],
+               UserService, CategoryService, BookService, ShoppingCartService,
+               OrderService, AnimationsService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
