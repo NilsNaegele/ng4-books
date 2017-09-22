@@ -4,7 +4,7 @@
       <app-book-filter [category]="category"></app-book-filter>
     </div>
     <div class="col">
-      <div class="row">
+      <div class="row" *ngIf="cart$ | async as cart">
         <ng-container *ngFor="let book of filteredBooks; let i = index;">
           <div class="col">
             <app-book-card [book]="book" [shoppingCart]="cart"></app-book-card>

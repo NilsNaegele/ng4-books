@@ -4,7 +4,7 @@ import { Book } from './books';
 export class ShoppingCart {
   items: ShoppingCartItem[] = [];
 
-  constructor(public itemsMap: { [bookId: string]: ShoppingCartItem } ) {
+  constructor(private itemsMap: { [bookId: string]: ShoppingCartItem } ) {
           this.itemsMap = itemsMap || {};
           for (const bookId in itemsMap) {
               if (this.itemsMap.hasOwnProperty(bookId)) {
