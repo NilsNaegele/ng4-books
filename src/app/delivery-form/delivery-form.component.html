@@ -1,0 +1,44 @@
+<form #f="ngForm" (ngSubmit)="placeOrder()">
+  <div class="form-group">
+    <label for="fullName">Name</label>
+    <input #fullName="ngModel" [(ngModel)]="userShippingInfo.fullName" name="fullName" id="fullName"
+     type="text" class="form-control" placeholder="Full Name ..." required>
+    <div class="alert alert-danger" *ngIf="fullName.touched && fullName.invalid">
+      Full Name is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input #address="ngModel" [(ngModel)]="userShippingInfo.address" name="address" id="address"
+     type="text" class="form-control" placeholder="Address ..." required>
+    <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
+      Address is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="zipCode">Zip Code</label>
+    <input #zipCode="ngModel" [(ngModel)]="userShippingInfo.zipCode" name="zipCode" id="zipCode"
+     type="text" class="form-control" placeholder="Zip Code ..." required>
+    <div class="alert alert-danger" *ngIf="zipCode.touched && zipCode.invalid">
+      Zip Code is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="city">City</label>
+    <input #city="ngModel" [(ngModel)]="userShippingInfo.city" name="city" id="city"
+     type="text" class="form-control" placeholder="City ..." required>
+    <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+      City is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="country">Country</label>
+    <input #country="ngModel" [(ngModel)]="userShippingInfo.country" name="country" id="country"
+     type="text" class="form-control" placeholder="Country ..." required>
+    <div class="alert alert-danger" *ngIf="country.touched && country.invalid">
+      Country is required.
+    </div>
+  </div>
+
+  <button [disabled]="!f.valid" class="btn btn-warning btn-lg">Get Delivered Hero</button>
+</form>

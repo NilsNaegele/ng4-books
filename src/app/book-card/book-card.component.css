@@ -1,5 +1,8 @@
 .card {
   margin-bottom: 20px;
+  -webkit-box-shadow: 10px 10px 37px 0px rgba(0,0,0,0.29);
+  -moz-box-shadow: 10px 10px 37px 0px rgba(0,0,0,0.29);
+  box-shadow: 10px 10px 37px 0px rgba(0,0,0,0.29);
 }
 
 .card-footer {

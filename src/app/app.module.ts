@@ -17,6 +17,7 @@ import { UserService } from './user.service';
 import { CategoryService } from './category.service';
 import { BookService } from './book.service';
 import { ShoppingCartService } from './shopping-cart.service';
+import { OrderService } from './order.service';
 
 import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
@@ -39,6 +40,8 @@ import { BookCardComponent } from './book-card/book-card.component';
 import { BookFilterComponent } from './books/book-filter/book-filter.component';
 import { BookQuantityComponent } from './book-quantity/book-quantity.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
+import { DeliveryFormComponent } from './delivery-form/delivery-form.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,9 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     BookCardComponent,
     BookFilterComponent,
     BookQuantityComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    ShoppingCartSummaryComponent,
+    DeliveryFormComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +90,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
       { path: 'shopping-cart', component: ShoppingCartComponent },
 
       { path: 'check-out', component: CheckOutComponent, canActivate: [ AuthenticationGuard ] },
-      { path: 'order-success', component: OrderSuccessComponent, canActivate: [ AuthenticationGuard ] },
+      { path: 'order-success/:id', component: OrderSuccessComponent, canActivate: [ AuthenticationGuard ] },
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [ AuthenticationGuard ] },
       { path: 'admin/books/new', component: BookFormComponent, canActivate: [ AuthenticationGuard, AdminAuthorizationGuard ] },
       { path: 'admin/books/:id', component: BookFormComponent, canActivate: [ AuthenticationGuard, AdminAuthorizationGuard ] },
@@ -96,7 +101,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     ])
   ],
   providers: [ AuthenticationService, AuthenticationGuard, AdminAuthorizationGuard,
-               UserService, CategoryService, BookService, ShoppingCartService ],
+               UserService, CategoryService, BookService, ShoppingCartService, OrderService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
