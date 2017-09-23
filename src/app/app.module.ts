@@ -46,6 +46,9 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
 import { DeliveryFormComponent } from './delivery-form/delivery-form.component';
 import { AnimationsListBasicComponent } from './animations-list-basic/animations-list-basic.component';
 import { AnimationsListEnterLeaveComponent } from './animations-list-enter-leave/animations-list-enter-leave.component';
+import { AnimationsListEnterLeaveStatesComponent } from './animations-list-enter-leave-states/animations-list-enter-leave-states.component';
+import { AnimationsListMultistepComponent } from './animations-list-multistep/animations-list-multistep.component';
+import { AnimationsListGroupsComponent } from './animations-list-groups/animations-list-groups.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +76,10 @@ import { AnimationsListEnterLeaveComponent } from './animations-list-enter-leave
     ShoppingCartSummaryComponent,
     DeliveryFormComponent,
     AnimationsListBasicComponent,
-    AnimationsListEnterLeaveComponent
+    AnimationsListEnterLeaveComponent,
+    AnimationsListEnterLeaveStatesComponent,
+    AnimationsListMultistepComponent,
+    AnimationsListGroupsComponent
   ],
   imports: [
     BrowserModule,

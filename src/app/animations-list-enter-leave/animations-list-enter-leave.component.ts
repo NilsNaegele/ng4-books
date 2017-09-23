@@ -6,7 +6,7 @@ import { Technology } from '../animations.service';
   selector: 'app-animations-list-enter-leave',
   template: `
     <ul>
-          <li class="btn-info text-center mt-3" style="height: 3rem; width:10rem; padding-top:0.7rem;"
+          <li class="btn-success text-center mt-3" style="height: 3rem; width:10rem; padding-top:0.7rem;"
           *ngFor="let technology of technologies"
             [@flyInOut]="'in'">
               {{ technology.name }}
