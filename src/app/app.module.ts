@@ -20,6 +20,7 @@ import { BookService } from './book.service';
 import { ShoppingCartService } from './shopping-cart.service';
 import { OrderService } from './order.service';
 import { AnimationsService } from './animations.service';
+import { ChatService } from './chat.service';
 
 import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
@@ -115,7 +116,7 @@ import { AnimationsListGroupsComponent } from './animations-list-groups/animatio
   ],
   providers: [ AuthenticationService, AuthenticationGuard, AdminAuthorizationGuard,
                UserService, CategoryService, BookService, ShoppingCartService,
-               OrderService, AnimationsService ],
+               OrderService, AnimationsService, ChatService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

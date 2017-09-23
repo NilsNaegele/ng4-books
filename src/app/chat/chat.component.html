@@ -1,3 +1,14 @@
-<p>
-  chat works!
-</p>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon alert-primary" id="sizing-addon1"><i class="fa fa-commenting" aria-hidden="true"></i></span>
+  <input [(ngModel)]="newMessage.message" type="text" class="form-control" placeholder="What's going on? ..."
+  aria-label="Share" aria-describedby="sizing-addon1">
+</div>
+<p *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</p>
+<button (click)="sendShare()" class="btn btn-primary btn-lg mt-2 mb-2">SHARE</button>
+<ul class="list-group">
+  <li *ngFor="let share of shares | async; first as isFirst; last as isLast; even as isEven; odd as isOdd;"
+  class="list-group-item" [ngClass]="{'list-group-item-success': isFirst, 'list-group-item-warning': isLast,
+   'list-group-item-info': isEven && !isFirst && !isLast, 'list-group-item-danger': isOdd && !isFirst && !isLast }">
+    {{ share.dateCreated | date:'medium' }} {{ share.userId }} shared: {{ share.message }}
+  </li>
+</ul>

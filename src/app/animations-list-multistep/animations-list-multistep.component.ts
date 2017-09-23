@@ -41,11 +41,11 @@ export class AnimationsListMultistepComponent {
   @Input() technologies: Technology[];
 
   animationStarted(event: AnimationEvent) {
-    console.warn('Animation started: ', event);
+    // console.warn('Animation started: ', event);
   }
 
   animationDone(event: AnimationEvent) {
-    console.warn('Animation done: ', event);
+    // console.warn('Animation done: ', event);
   }
 
 }
