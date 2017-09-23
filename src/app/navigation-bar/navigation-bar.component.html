@@ -2,31 +2,44 @@
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" routerLink="/">Angular 4 Space Books</a>
+  <a class="navbar-brand" routerLink="/">
+    Angular 4 Space Books
+    <i class="fa fa-book fa-lg" aria-hidden="true"></i>
+  </a>
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span>
+          <i class="fa fa-home" aria-hidden="true"></i>
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/about">About</a>
+        <a class="nav-link" routerLink="/about">About
+          <i class="fa fa-info" aria-hidden="true"></i>
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/animations">Animations</a>
+        <a class="nav-link" routerLink="/animations">Animations
+          <i class="fa fa-film" aria-hidden="true"></i>
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/chat">Chat</a>
+        <a class="nav-link" routerLink="/chat">Chat
+          <i class="fa fa-comments" aria-hidden="true"></i>
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/shopping-cart">
-          Shopping-Cart
-          <span class="badge badge-warning badg-pill"
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          <span class="badge badge-warning badge-pill"
           *ngIf="cart$ | async as cart" > {{ cart.totalItemsCount }}</span>
         </a>
       </li>
       <ng-template #anonymousUser>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/login">Log In</a>
+          <a class="nav-link" routerLink="/login">Log In
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+          </a>
         </li>
       </ng-template>
       <li *ngIf="appUser; else anonymousUser" ngbDropdown class="d-inline-block">
@@ -48,7 +61,9 @@
       <input class="form-control mr-sm-2" type="text" #query placeholder="Search ...">
       <button class="btn btn-primary my-2 my-sm-0"
       (click)="onSearch(query.value); query.value = '';"
-       type="button">Search</button>
+       type="button">Search
+       <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+     </button>
     </form>
   </div>
 </nav>
