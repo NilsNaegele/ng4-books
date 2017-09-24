@@ -5,7 +5,8 @@
      class="card-img-top"
     [src]="book.imageUrl" alt="{{ book.title }}">
     <div class="card-block">
-      <h4 class="card-title text-center">{{ book.title }}</h4>
+      <h4 class="card-title text-center">{{ book.title }}
+        <span class="pull-right"><app-heart></app-heart></span></h4>
       <p class="card-text">{{ book.description }}</p>
     </div>
   </div>

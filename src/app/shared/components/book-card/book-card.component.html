@@ -5,7 +5,8 @@
   </a>
   <div class="card-block">
     <h4 class="card-title">{{ book.title }}</h4>
-    <p class="card-text">{{ book.price | currency:'EUR':true }}</p>
+    <p class="card-text">{{ book.price | currency:'EUR':true }}
+      <span class="pull-right"><app-favorite></app-favorite></span></p>
     <div *ngIf="showActions"  class="btn-group" role="group" aria-label="Angular Links">
       <a href="https://angular.io/api" target="_blank" class="btn btn-warning">API</a>
       <a href="https://github.com/angular/angular/tree/4.4.2" target="_blank" class="btn btn-primary">Code</a>
