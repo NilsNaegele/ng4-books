@@ -21,6 +21,7 @@ export class NavigationBarComponent implements OnInit {
               private bookService: BookService) { }
 
   onSearch(query: string): void {
+    console.log(query);
     if (!query) { return; }
     this.bookService.searchEvent.emit(query.toLowerCase());
   }

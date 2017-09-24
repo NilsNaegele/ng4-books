@@ -58,7 +58,8 @@
       </li>
     </ul>
     <form class="form-inline">
-      <input class="form-control mr-sm-2" type="text" #query placeholder="Search ...">
+      <input class="form-control mr-sm-2" type="text" #query placeholder="Search ..."
+      (keyup)="onSearch(query.value);">
       <button class="btn btn-primary my-2 my-sm-0"
       (click)="onSearch(query.value); query.value = '';"
        type="button">Search
