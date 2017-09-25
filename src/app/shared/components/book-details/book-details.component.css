@@ -3,3 +3,10 @@
 -moz-box-shadow: 16px 19px 160px 9px rgba(0,0,0,0.36);
 box-shadow: 16px 19px 160px 9px rgba(0,0,0,0.36);
 }
+
+p {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 30rem;
+}

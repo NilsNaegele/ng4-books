@@ -21,6 +21,8 @@ import { ChatService } from './services/chat.service';
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { HeartComponent } from './components/heart/heart.component';
 
+import { MouseOverToRevealDirective } from './directives/mouse-over-to-reveal/mouse-over-to-reveal-directive';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -33,7 +35,8 @@ import { HeartComponent } from './components/heart/heart.component';
       { path: 'book/:id', component: BookDetailsComponent },
     ])
   ],
-  declarations: [ BookCardComponent, BookDetailsComponent, BookQuantityComponent, FavoriteComponent, HeartComponent ],
+  declarations: [ BookCardComponent, BookDetailsComponent, BookQuantityComponent,
+                  FavoriteComponent, HeartComponent, MouseOverToRevealDirective ],
   exports: [ BookCardComponent, BookQuantityComponent, FavoriteComponent, HeartComponent, CommonModule,
     FormsModule, CustomFormsModule, AngularFireDatabaseModule, AngularFireAuthModule, NgbModule.forRoot().ngModule],
   providers: [ AuthenticationService,
