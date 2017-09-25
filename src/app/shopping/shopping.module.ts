@@ -14,6 +14,7 @@ import { OrderSuccessComponent } from './components/order-success/order-success.
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 
 import { AuthenticationGuard } from '../shared/services/authentication-guard.service';
+import { FeedbackComponent } from './components/books/feedback/feedback.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { AuthenticationGuard } from '../shared/services/authentication-guard.ser
     OrderSuccessComponent,
     MyOrdersComponent,
     ShoppingCartComponent,
-    ShoppingCartSummaryComponent
+    ShoppingCartSummaryComponent,
+    FeedbackComponent
   ]
 })
 export class ShoppingModule { }

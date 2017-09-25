@@ -1,0 +1,38 @@
+<ng-template #content let-c="close" let-d="dismiss">
+<div class="modal-header">
+    <h4 class="modal-title">What can be improved?</h4>
+    <button type="button" class="close" aria-label="Close"
+    (click)="d('Cross click')">
+    <span aria-hidden="true">&times;</span>
+   </button>
+</div>
+<div class="modal-body">
+  <form #f="ngForm">
+        <div class="form-group">
+            <label for="fullName" class="form-control-label">Your Name:</label>
+            <input #fullName="ngModel" [(ngModel)]="feedback.fullName" name="fullName"
+            (keydown.enter)="setMessage(fullName.value)" (keyup)="checkStale(fullName.value)"
+             class="tooltip-test" title="Press Enter In Input" id="fullName" class="form-control" required>
+             <div class="alert alert-danger" *ngIf="fullName.touched && fullName.invalid">
+               Name is required.
+             </div>
+        </div>
+        <div class="form-group">
+            <label for="messageText" class="form-control-label">Message:</label>
+            <textarea #messageText="ngModel" [(ngModel)]="feedback.messageText"
+            name="messageText"  class="form-control" id="messageText" required></textarea>
+            <div class="alert alert-danger" *ngIf="messageText.touched && messageText.invalid">
+              Message is required.
+            </div>
+        </div>
+  </form>
+  <h4 *ngIf="message" [style.color]="isStale ? 'red' : 'green'">Welcome: {{ message }}!</h4>
+</div>
+<div class="modal-footer">
+      <button type="button" class="btn btn-outline-primary"
+      (click)="c('Close click'); sendMessage();">Close</button>
+      <button type="button" class="btn btn-outline-info" [disabled]="!f.valid"
+      (click)="c('Close click'); sendMessage();">Send</button>
+</div>
+</ng-template>
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Feedback</button>
